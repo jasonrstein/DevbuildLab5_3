@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\jstein\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\jstein\\.nuget\\packages"
+    ]
+  }
+}
