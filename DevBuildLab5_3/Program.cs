@@ -17,22 +17,63 @@ namespace DevBuildLab5_3
             this.year = pYear;
             this.price = pPrice;
         }
+
+        public override string ToString()
+        {
+            return $"{this.make},{this.model},{this.year},{this.price}";
+        }
     }
 
     class UsedCar : NewCar
     {
         public string condition { get; set; }
         public decimal mileage { get; set; }
-
+        
         public UsedCar(string pMake, string pModel, int pYear, decimal pPrice, string pCondition, decimal pMileage) : base(pMake, pModel, pYear, pPrice)
         {
             condition = pCondition;
             mileage = pMileage;
         }
+
+        public override string ToString()
+        {
+            return $"{this.make},{this.model},{this.year},{this.price},{this.condition},{this.mileage}";
+        }
     }
 
-    class CarLot
+    class CarLotApp
     {
+        private List<string> Cars;
+
+        CarLotApp(List<UsedCar> usedCar, List<NewCar> newCar)
+        {
+            foreach (var car in usedCar)
+            {
+                this.Cars.Add(car.ToString());
+            }
+
+            foreach (var car in newCar)
+            {
+                this.Cars.Add(car.ToString());
+            }
+        }
+
+
+
+        public void ListCars()
+        {
+
+        }
+
+        public void BuyCar()
+        {
+
+        }
+
+        public void AddCar()
+        {
+
+        }
 
     }
 
@@ -42,10 +83,10 @@ namespace DevBuildLab5_3
         {
             bool continueYN = true;
 
-            int userOption = 1;
             int userCarPur;
             int userAddedYear;
             int count;
+            
             decimal userAddedPrice;
             decimal userAddedMileage;
 
@@ -53,7 +94,6 @@ namespace DevBuildLab5_3
             string continueWithPurchase;
             string userAddedMake;
             string userAddedModel;
-            string userAddedCondition;
 
 
             List<NewCar> ListOfNewCars = new List<NewCar>();
@@ -134,9 +174,13 @@ namespace DevBuildLab5_3
                     userAddedCar = Console.ReadLine();
 
                     Console.WriteLine("Please add the vehicle information");
+                    Console.Write("Please enter the make: ");
                     userAddedMake = Console.ReadLine();
+                    Console.Write("Please enter the model: ");
                     userAddedModel = Console.ReadLine();
+                    Console.Write("Please enter the year: ");
                     userAddedYear = Convert.ToInt32(Console.ReadLine());
+                    Console.Write("Please enter the price: ");
                     userAddedPrice = Convert.ToDecimal(Console.ReadLine());
 
                     if (userAddedCar == "new")
@@ -145,7 +189,7 @@ namespace DevBuildLab5_3
                     }
                     else
                     {
-                        Console.WriteLine("Please add the vehicle mileage");
+                        Console.Write("Please add the vehicle mileage: ");
 
                         userAddedMileage = Convert.ToDecimal(Console.ReadLine());
 
